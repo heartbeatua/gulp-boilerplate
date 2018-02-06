@@ -1,0 +1,20 @@
+// colors
+$color-gray: #6e6e6e;
+$color-orange: #ff8d69;
+
+$color-primary: $color-gray;
+$color-secondary: $color-orange;
+
+// grid
+$grid-columns: 12;
+$grid-gap: 1rem;
+$grid-sizes: (
+  xs: 0,
+  sm: 768,
+  md: 992,
+  lg: 1200
+);
+$grid-size-lg: #{map-get($grid-sizes, lg)}px;
+
+// font
+$font-primary: monospace, serif;

@@ -1,0 +1,108 @@
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+[aria-controls] {
+  cursor: pointer;
+}
+
+[aria-disabled] {
+  cursor: default;
+}
+
+.touchevents {
+  // https://stackoverflow.com/a/6394497
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  // https://stackoverflow.com/a/17490775
+  body {
+    cursor: pointer;
+  }
+}
+
+.text {
+  &-center {
+    text-align: center;
+
+    &-sm-down {
+      @include mq(xs, sm) {
+        text-align: center;
+      }
+    }
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-left {
+    text-align: left;
+  }
+}
+
+.img {
+  &-fluid {
+    max-width: 100%;
+  }
+
+  &-round {
+    border-radius: 50%;
+  }
+}
+
+.visually-hidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+.svg-store {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+}
+
+.svg-icon {
+  display: inline-block;
+  //width: 1em;
+  //height: 1em;
+  fill: currentColor;
+}
+
+.disable-select {
+  user-select: none;
+}
+
+.hidden-sm-down { @include mq(xs, sm) { display: none; } }
+.hidden-md-down { @include mq(xs, md) { display: none; } }
+.hidden-lg-down { @include mq(xs, lg) { display: none; } }
+
+.hidden-sm-up { @include mq(sm) { display: none; } }
+.hidden-md-up { @include mq(md) { display: none; } }
+.hidden-lg-up { @include mq(lg) { display: none; } }
+
+.list-unstyled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}

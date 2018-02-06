@@ -1,0 +1,16 @@
+@mixin mq($bpmin, $bpmax: false) {
+  @each $sz, $mq in $grid-sizes {
+    @if $sz == $bpmin {
+      $a: $mq;
+      @if $bpmax {
+        @each $sz, $mq in $grid-sizes {
+          @if $sz == $bpmax {
+            @media (min-width: #{$a}px) and (max-width: #{$mq - 1}px) { @content }
+          }
+        }
+      } @else {
+        @media (min-width: #{$a}px) { @content }
+      }
+    }
+  }
+}

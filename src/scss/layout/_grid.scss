@@ -1,0 +1,103 @@
+// inspired by flexboxgrid (https://github.com/kristoferjoseph/flexboxgrid)
+
+.container {
+  position: relative;
+  max-width: $grid-size-lg;
+  box-sizing: content-box;
+  padding-left: $grid-gap;
+  padding-right: $grid-gap;
+  @extend .mx-auto;
+}
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: -$grid-gap * 0.5;
+  margin-left: -$grid-gap * 0.5;
+}
+
+[class|="col"] {
+  flex: 0 0 auto;
+  padding-left: $grid-gap * 0.5;
+  padding-right: $grid-gap * 0.5;
+}
+
+.grid-no-gap {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@each $sz, $mq in $grid-sizes {
+  @media (min-width: #{$mq}px) {
+    @for $i from 0 through $grid-columns {
+      @if ($i == 0) {
+        .col-#{$sz} {
+          flex: 1 0 0;
+          max-width: 100%;
+        }
+      } @else {
+        .col-#{$sz}-#{$i} {
+          flex: 0 0 percentage(1 / $grid-columns * $i);
+          max-width: percentage(1 / $grid-columns * $i);
+        }
+        @if ($i == 2) {
+          .col-#{$sz}-2-4 {
+            flex: 0 0 20%;
+            max-width: 20%;
+          }
+        }
+      }
+    }
+
+    @for $i from 0 through $grid-columns - 1 {
+      .col-#{$sz}-offset-#{$i} {
+        margin-left: percentage(1 / $grid-columns * $i);
+      }
+    }
+
+    .start-#{$sz} {
+      justify-content: flex-start;
+      text-align: start;
+    }
+
+    .center-#{$sz} {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .end-#{$sz} {
+      justify-content: flex-end;
+      text-align: end;
+    }
+
+    .top-#{$sz} {
+      align-items: flex-start;
+    }
+
+    .middle-#{$sz} {
+      align-items: center;
+    }
+
+    .bottom-#{$sz} {
+      align-items: flex-end;
+    }
+
+    .around-#{$sz} {
+      justify-content: space-around;
+    }
+
+    .between-#{$sz} {
+      justify-content: space-between;
+    }
+
+    .first-#{$sz} {
+      order: -1;
+    }
+
+    .last-#{$sz} {
+      order: 1;
+    }
+  }
+}

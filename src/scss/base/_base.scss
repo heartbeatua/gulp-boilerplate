@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  @include mq(xs, sm) {
+    font-size: 20px;
+  }
+  @include mq(sm) {
+    font-size: 40px;
+  }
+}
+
+body {
+  font: normal 400 14px/1.5 $font-primary;
+  color: $color-primary;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3 {
+  word-break: break-word;
+}

@@ -1,0 +1,9 @@
+.icon-twitter {
+  width: 24px;
+  height: 18px;
+  transition: 0.1s ease;
+
+  &:hover {
+    color: $color-secondary;
+  }
+}
