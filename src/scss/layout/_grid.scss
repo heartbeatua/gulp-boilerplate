@@ -1,12 +1,12 @@
 // inspired by flexboxgrid (https://github.com/kristoferjoseph/flexboxgrid)
 
 .container {
+  @extend %mx-auto;
   position: relative;
   max-width: $grid-size-lg;
   box-sizing: content-box;
   padding-left: $grid-gap;
   padding-right: $grid-gap;
-  @extend .mx-auto;
 }
 
 .row {

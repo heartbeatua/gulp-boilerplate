@@ -5,6 +5,7 @@ const cleancss = require('gulp-clean-css')
 const gulpif = require('gulp-if')
 const plumber = require('gulp-plumber')
 const sass = require('gulp-sass')
+const sassLint = require('gulp-sass-lint')
 const sourcemaps = require('gulp-sourcemaps')
 const svgstore = require('gulp-svgstore')
 const svgmin = require('gulp-svgmin')
@@ -16,6 +17,7 @@ const argv = require('yargs').argv
 
 let folder = './'
 let dist = './dist'
+let scss = `${folder}/src/scss/**/*.scss`
 
 gulp.task('browser-sync', () => {
   browserSync({
@@ -29,7 +31,10 @@ gulp.task('browser-sync', () => {
 gulp.task('bs-reload', () => browserSync.reload())
 
 gulp.task('styles', () => {
-  return gulp.src([`${folder}/src/scss/**/*.scss`])
+  return gulp.src(scss)
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError())
     .pipe(plumber({
       errorHandler: function(err) {
         console.log(err.message)
@@ -42,6 +47,13 @@ gulp.task('styles', () => {
     .pipe(gulpif(!argv.minify, sourcemaps.write('./map')))
     .pipe(gulp.dest(`${folder}/css`))
     .pipe(browserSync.reload({stream: true}))
+})
+
+gulp.task('styleslint', () => {
+  return gulp.src(scss)
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError())
 })
 
 gulp.task('scripts', () => {
@@ -82,11 +94,9 @@ gulp.task('dev', () => {
   })
 })
 
-gulp.task('build', () => {
-  runSequence(['default'], () => {
-    gulp.src(`${folder}/css/**/*.css`, { base: '.' }).pipe(gulp.dest(dist))
-    gulp.src(`${folder}/js/**/*.js`, { base: '.' }).pipe(gulp.dest(dist))
-    gulp.src(`${folder}/img/**/*`, { base: '.' }).pipe(gulp.dest(dist))
-    gulp.src(`${folder}/*.html`).pipe(gulp.dest(dist))
-  })
+gulp.task('build', ['default'], () => {
+  gulp.src(`${folder}/css/**/*.css`, { base: '.' }).pipe(gulp.dest(dist))
+  gulp.src(`${folder}/js/**/*.js`, { base: '.' }).pipe(gulp.dest(dist))
+  gulp.src(`${folder}/img/**/*`, { base: '.' }).pipe(gulp.dest(dist))
+  gulp.src(`${folder}/*.html`).pipe(gulp.dest(dist))
 })

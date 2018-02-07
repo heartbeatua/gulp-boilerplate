@@ -14,9 +14,11 @@ html {
 body {
   font: normal 400 14px/1.5 $font-primary;
   color: $color-primary;
+  // sass-lint:disable-all
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // sass-lint:enable-all
 }
 
 img {

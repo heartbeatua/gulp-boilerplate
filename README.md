@@ -2,7 +2,7 @@
 
 ## Features
 
-* Sass for stylesheets
+* Sass for stylesheets (with lint)
 * ES6 for JavaScript
 * Symbol svg-sprite
 
@@ -13,7 +13,7 @@
 - `gulp dev`: Run development server.
 - `gulp build --minify`: Production ready build.
 
-## Already included:
+## Already included
 - https://github.com/kristoferjoseph/flexboxgrid @ edited version
 - https://github.com/necolas/normalize.css/
 - https://github.com/ftlabs/fastclick
@@ -22,9 +22,13 @@
 - https://modernizr.com/ @ custom build
 - https://jquery.com/
 
+## SASS Lint
+- https://github.com/sasstools/sass-lint @ gulp version
+- https://github.com/brigade/scss-lint/blob/master/config/default.yml @ config
+
 ## Keep in mind
-- https://github.com/DrkSephy/es6-cheatsheet
-- https://github.com/leonidlebedev/javascript-airbnb
 - https://github.com/joshbuchea/HEAD
 - https://github.com/thedaviddias/Front-End-Checklist
 - https://github.com/chris-pearce/css-guidelines
+- https://github.com/DrkSephy/es6-cheatsheet
+- https://github.com/leonidlebedev/javascript-airbnb

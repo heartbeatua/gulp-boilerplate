@@ -10,6 +10,7 @@
   cursor: default;
 }
 
+// sass-lint:disable-all
 .touchevents {
   // https://stackoverflow.com/a/6394497
   input[type="text"],
@@ -28,6 +29,7 @@
     cursor: pointer;
   }
 }
+// sass-lint:enable-all
 
 .text {
   &-center {
@@ -65,8 +67,10 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
+  // sass-lint:disable-all
   clip: rect(0 0 0 0);
   clip: rect(0, 0, 0, 0);
+  // sass-lint:enable-all
   position: absolute;
 }
 
@@ -102,7 +106,11 @@
   padding: 0;
 }
 
-.mx-auto {
+%mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mx-auto {
+  @extend %mx-auto;
 }
